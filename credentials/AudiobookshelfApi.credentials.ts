@@ -5,13 +5,13 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class HttpBinApi implements ICredentialType {
-	name = 'httpbinApi';
-	displayName = 'HttpBin API';
-	documentationUrl = 'https://your-docs-url';
+export class AudiobookshelfApi implements ICredentialType {
+	name = 'audiobookshelfApi';
+	displayName = 'Audiobookshelf API';
+	documentationUrl = 'https://api.audiobookshelf.org/';
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Token',
+			displayName: 'API Key',
 			name: 'token',
 			type: 'string',
 			default: '',
@@ -23,7 +23,8 @@ export class HttpBinApi implements ICredentialType {
 			displayName: 'Domain',
 			name: 'domain',
 			type: 'string',
-			default: 'https://httpbin.org',
+			placeholder: 'http://audiobookshelf.local:13378',
+			default: '',
 		},
 	];
 
@@ -43,8 +44,8 @@ export class HttpBinApi implements ICredentialType {
 	// The block below tells how this credential can be tested
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{$credentials?.domain}}',
-			url: '/bearer',
+			baseURL: '={{$credentials?.domain}}/api',
+			url: '/me',
 		},
 	};
 }

@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-audiobookshelf",
   "version": "0.1.0",
   "description": "",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/davejlong/n8n-nodes-audiobookshelf",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Dave Long",
+    "email": "me@davejlong.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/davejlong/n8n-nodes-audiobookshelf.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +33,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/AudiobookshelfApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Audiobookshelf/Audiobookshelf.node.js"
     ]
   },
   "devDependencies": {
@@ -47,6 +45,7 @@
     "eslint-plugin-n8n-nodes-base": "^1.16.3",
     "gulp": "^5.0.0",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {

@@ -1,0 +1,14 @@
+{
+	"node": "n8n-nodes-audiobookshelf",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Self-Hosted", "Media"],
+	"resources": {
+		"credentialDocumentation": [
+			{ "url": "https://api.audiobookshelf.org/#authentication" }
+		],
+		"primaryDocumentation": [
+			{ "url": "https://api.audiobookshelf.org" }
+		]
+	}
+}
