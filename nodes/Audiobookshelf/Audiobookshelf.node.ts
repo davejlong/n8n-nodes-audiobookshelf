@@ -6,6 +6,7 @@ export class Audiobookshelf implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Audiobookshelf',
 		name: 'audiobookshelf',
+		icon: 'file:audiobookshelf.svg',
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{ $parameter["operation"] + ": " + $parameter["resource"] }}',
