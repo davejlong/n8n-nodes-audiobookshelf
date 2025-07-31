@@ -1,5 +1,3 @@
-/* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
-/* eslint-disable n8n-nodes-base/node-param-operation-option-action-miscased */
 import { INodeProperties } from "n8n-workflow";
 
 export const description: INodeProperties[] = [
@@ -25,6 +23,74 @@ export const description: INodeProperties[] = [
 				}
 			},
 			{
+				name: 'Get Authors',
+				value: 'getAuthors',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's authors",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/authors',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: { property: 'authors' }
+							}
+						]
+					}
+				}
+			},
+			{
+				name: 'Get Collections',
+				value: 'getCollections',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's collections",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/collections',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: { property: 'results' }
+							}
+						]
+					}
+				}
+			},
+			{
+				name: 'Get Filter Data',
+				value: 'getFilterData',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's filter data that can be used for displaying a filter list",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/filterdata',
+					},
+				},
+			},
+			{
+				name: 'Get Items',
+				value: 'getItems',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's items",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/items',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: { property: 'results' }
+							}
+						]
+					}
+				}
+			},
+			{
 				name: 'Get Many',
 				value: 'getAll',
 				action: 'Get many libraries',
@@ -43,62 +109,20 @@ export const description: INodeProperties[] = [
 				}
 			},
 			{
-				name: 'Get Items',
-				value: 'getItems',
-				action: "Get library's items",
+				name: 'Get Personalized View',
+				value: 'getPersonalizedView',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's personalized view for home page display",
 				routing: {
 					request: {
-						url: '=/libraries/{{$parameter.id}}/items',
+						url: '=/libraries/{{$parameter.id}}/personalized',
 					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'results' }
-							}
-						]
-					}
-				}
-			},
-			{
-				name: 'Get Series',
-				value: 'getSeries',
-				action: "Get library's series",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/series',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'results' }
-							}
-						]
-					}
-				}
-			},
-			{
-				name: 'Get Collections',
-				value: 'getCollections',
-				action: "Get library's collections",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/collections',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'results' }
-							}
-						]
-					}
 				}
 			},
 			{
 				name: 'Get Playlists',
 				value: 'getPlaylists',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
 				action: "Get library's playlists",
 				routing: {
 					request: {
@@ -115,56 +139,9 @@ export const description: INodeProperties[] = [
 				}
 			},
 			{
-				name: 'Get Personalized View',
-				value: 'getPersonalizedView',
-				action: "Get library's personalized view for home page display",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/personalized',
-					},
-				}
-			},
-			{
-				name: 'Get Filter Data',
-				value: 'getFilterData',
-				action: "Get library's filter data that can be used for displaying a filter list",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/filterdata',
-					},
-				},
-			},
-			{
-				name: 'Get Stats',
-				value: 'getStats',
-				action: "Get library's stats",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/stats',
-					},
-				},
-			},
-			{
-				name: 'Get Authors',
-				value: 'getAuthors',
-				action: "Get library's authors",
-				routing: {
-					request: {
-						url: '=/libraries/{{$parameter.id}}/authors',
-					},
-					output: {
-						postReceive: [
-							{
-								type: 'rootProperty',
-								properties: { property: 'authors' }
-							}
-						]
-					}
-				}
-			},
-			{
 				name: 'Get Recent Episodes',
 				value: 'getRecentEpisodes',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
 				action: "Get library's recent podcast episodes",
 				routing: {
 					request: {
@@ -179,6 +156,36 @@ export const description: INodeProperties[] = [
 						]
 					}
 				}
+			},
+			{
+				name: 'Get Series',
+				value: 'getSeries',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's series",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/series',
+					},
+					output: {
+						postReceive: [
+							{
+								type: 'rootProperty',
+								properties: { property: 'results' }
+							}
+						]
+					}
+				}
+			},
+			{
+				name: 'Get Stats',
+				value: 'getStats',
+				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
+				action: "Get library's stats",
+				routing: {
+					request: {
+						url: '=/libraries/{{$parameter.id}}/stats',
+					},
+				},
 			},
 		],
 		default: 'getAll',

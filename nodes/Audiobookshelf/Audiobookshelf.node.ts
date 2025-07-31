@@ -1,6 +1,8 @@
 import { INodeType, INodeTypeDescription, NodeConnectionType } from "n8n-workflow";
 
 import * as library from './actions/library';
+import * as libraryItem from './actions/library_item';
+import * as user from './actions/user';
 
 export class Audiobookshelf implements INodeType {
 	description: INodeTypeDescription = {
@@ -37,10 +39,20 @@ export class Audiobookshelf implements INodeType {
 						name: 'Library',
 						value: 'library',
 					},
+					{
+						name: 'Library Item',
+						value: 'libraryItem',
+					},
+					{
+						name: 'User',
+						value: 'user',
+					},
 				],
 				default: 'library',
 			},
 			...library.description,
+			...libraryItem.description,
+			...user.description,
 		],
 	};
 };
