@@ -1,5 +1,5 @@
 /* eslint-disable n8n-nodes-base/node-param-operation-option-action-miscased */
-import { INodeProperties } from "n8n-workflow";
+import { IBinaryKeyData, IExecuteSingleFunctions, IN8nHttpFullResponse, INodeExecutionData, INodeProperties } from "n8n-workflow";
 
 export const description: INodeProperties[] = [
 	{
@@ -34,12 +34,13 @@ export const description: INodeProperties[] = [
 					},
 					output: {
 						postReceive: [
-							{
-								type: 'binaryData',
-								properties: {
-									destinationProperty: 'data',
-								},
-							},
+							PostReceiveCover
+							// {
+							// 	type: 'binaryData',
+							// 	properties: {
+							// 		destinationProperty: 'data',
+							// 	},
+							// },
 						],
 					},
 				},
@@ -122,3 +123,14 @@ export const description: INodeProperties[] = [
 		]
 	},
 ];
+
+async function PostReceiveCover(this: IExecuteSingleFunctions, items: INodeExecutionData[], response: IN8nHttpFullResponse): Promise<INodeExecutionData[]> {
+	const binaryData = await this.helpers.prepareBinaryData(response.body as Buffer, 'cover', response.headers['Content-Type'] as string);
+	const newItems = items.map((item, index) => {
+		item.json = {};
+		item.binary = { data: binaryData } as IBinaryKeyData;
+		item.pairedItem = index;
+		return item;
+	});
+	return newItems;
+}
