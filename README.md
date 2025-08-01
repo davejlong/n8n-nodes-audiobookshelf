@@ -33,6 +33,19 @@ Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes
 * Get a library's authors
 * Get a library's recent episodes for a podcast library
 
+### Library Items
+
+* Get a library item
+* Get a library item's cover image
+
+### Users
+
+* Get many users
+* Get a single user
+* Get online users and active listening sessions
+* Get a user's listening sessions
+* Get a user's listening stats
+
 ## Credentials
 
 The node requires the URL for your Audiobookshelf server and an API token to authenticate requests. See [Audiobookshelf's documentation](https://api.audiobookshelf.org/#introduction) for how to retrieve an API token.
